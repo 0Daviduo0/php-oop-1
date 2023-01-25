@@ -1,5 +1,25 @@
 <?php
 
+class Genre {
+
+    public $name;
+
+    public function __construct($name) {
+
+        $this -> name = $name;
+
+    }
+
+    public function getHtml() {
+
+        $name = $this -> name;
+
+        return "<small>" . $name . "</name>";
+
+    }
+
+}
+
 class Movie {
 
     public $length;
@@ -40,52 +60,55 @@ class Movie {
     
         }
 
+        public function getHtml() {
+
+            return "<br><br>" . "<h1>" . $this->completeTitleInfo() . "</h1>" . "<br>" .
+                   $this->lengthAndLang() .  "<br>" .
+                   $this->description() . "<br><br>";
+
+        }
+
    
 }
 
-$movie1 = new Movie(
-    "3h 10m",
-    "Avatar - La via dell'acqua",
-    "2022",
-    "Action",
-    "Jake Sully vive con la sua nuova famiglia sul pianeta Pandora. Ma quando una 
-    vecchia, familiare minaccia torna ad affacciarsi per terminare quel che era 
-    stato iniziato un tempo, Jake dovrà nuovamente collaborare con Meytiri e 
-    l'esercito dei Na'vi per proteggere il loro incredibile pianeta. Jake e Naytiri 
-    saranno pertanto costretti a lasciare la loro casa ed esplorare varie regioni di Pandora.",
-    "Cinema",
-    "English"
-);
+$movies = [
 
-$movie2 = new Movie(
-    "1h 40m",
-    "Il gatto con gli stivali 2 - L'ultimo desiderio",
-    "2022",
-    "Animation",
-    "Il Gatto con gli Stivali scopre che la sua passione per l'avventura è stata pagata a 
-    caro prezzo: ben otto delle sue nove vite sono andate bruciate. Dovrà così 
-    intraprendere una nuova epica avventura alla ricerca del mitico Ultimo Desiderio, 
-    che gli permetterà di recuperare le sue nove vite.",
-    "Cinema",
-    "English"
-);
+    new Movie(
+        "3h 10m",
+        "Avatar - La via dell'acqua",
+        "2022",
+        "Action",
+        "Jake Sully vive con la sua nuova famiglia sul pianeta Pandora. Ma quando una 
+        vecchia, familiare minaccia torna ad affacciarsi per terminare quel che era 
+        stato iniziato un tempo, Jake dovrà nuovamente collaborare con Meytiri e 
+        l'esercito dei Na'vi per proteggere il loro incredibile pianeta. Jake e Naytiri 
+        saranno pertanto costretti a lasciare la loro casa ed esplorare varie regioni di Pandora.",
+        "Cinema",
+        "English"
+    ),
+    $movie2 = new Movie(
+        "1h 40m",
+        "Il gatto con gli stivali 2 - L'ultimo desiderio",
+        "2022",
+        "Animation",
+        "Il Gatto con gli Stivali scopre che la sua passione per l'avventura è stata pagata a 
+        caro prezzo: ben otto delle sue nove vite sono andate bruciate. Dovrà così 
+        intraprendere una nuova epica avventura alla ricerca del mitico Ultimo Desiderio, 
+        che gli permetterà di recuperare le sue nove vite.",
+        "Cinema",
+        "English"
+    )
+
+];
 
 echo "Movies";
-echo "<br><br>";
-echo $movie1 -> completeTitleInfo() ;
-echo "<br>";
-echo $movie1 -> lengthAndLang();
-echo "<br>";
-echo $movie1 -> description();
-echo "<br><br>";
-echo "-------------------------------------";
-echo "<br><br>";
-echo $movie2 -> completeTitleInfo();
-echo "<br>";
-echo $movie2 -> lengthAndLang();
-echo "<br>";
-echo $movie2 -> description();
-echo "<br><br>";
+foreach ($movies as $movie) {
+
+    echo $movie -> getHtml();
+    echo "-------------------------------------";
+
+};
+
 
 
 
